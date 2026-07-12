@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2>Add New Task</h2>
+
+    <form method="POST">
+
+        {{ form.hidden_tag() }}
+
+        <div class="mb-3">
+            {{ form.title.label }}
+            {{ form.title(class="form-control") }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.description.label }}
+            {{ form.description(class="form-control") }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.priority.label }}
+            {{ form.priority(class="form-select") }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.due_date.label }}
+            {{ form.due_date(class="form-control") }}
+        </div>
+
+        {% if request.endpoint == "edit_task" %}
+    <button class="btn btn-warning">
+        Update Task
+    </button>
+{% else %}
+    {{ form.submit(class="btn btn-success") }}
+{% endif %}
+
+    </form>
+
+</div>
+
+{% endblock %}
